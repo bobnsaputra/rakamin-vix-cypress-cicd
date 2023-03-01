@@ -1,0 +1,20 @@
+
+describe("User able to checkout automatically in LMS", () => {
+    it("As a user, I want to be able to checkout after deciding to join VIX VIP Access, so that I will be able to make payment for the chosen program. (Scenario 1)", () => {
+        cy.visit('https://web-staging.rakamin.com/virtual-internship-experience/explore')
+        cy.get('.sc-bVTuoI').click()
+        cy.get('.sc-fLAJmC > [data-cy="login-page-button"]').click()
+        cy.get('[data-cy="login-email-text-field"]').type('bobnathanzeonbe@gmail.com')
+        cy.get('[data-cy="login-password-text-field"]').type('lkjsadljkadflkjsaddflkj2')
+        cy.get('[data-cy="login-submit-button"]').click()
+        cy.get('[data-cy="vix-card-1"] > .vacancy-card-link > .sc-GKYbw').click()
+        cy.get('[data-cy="register-vix-button"]').click({force:true})
+        cy.get('[data-cy="phone-number-text-field"]').type('6285155327600')
+        cy.get('[data-cy="vix-info-source-option-1"]').click()
+        cy.get('[data-cy="agreement-checkbox"]').click()
+        cy.get('[data-cy="vix-form-submit-button"]').click()
+        cy.get('[data-cy="button-confirm"]').click()
+        cy.get('[data-cy="continue-to-payment-button"]').click()
+        cy.get('[data-cy="thank-you-page-title"]').should('have.text', 'Terima kasih atas pembelian Virtual Internship Experience - Dm Backup Bank Muamalat - Batch March 2023')
+    })
+})
